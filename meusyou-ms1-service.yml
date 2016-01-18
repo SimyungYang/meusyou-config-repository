@@ -3,6 +3,8 @@ server:
 
 eureka:
   instance:
+    hostname: ${vcap.application.uris[0]:localhost}
+    nonSecurePort: 80
     leaseRenewalIntervalInSeconds: 3
     metadataMap:
       instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value}}}
@@ -10,6 +12,8 @@ eureka:
     registryFetchIntervalSeconds: 5
     instanceInfoReplicationIntervalSeconds: 5
     initialInstanceInfoReplicationIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: ${vcap.services.meusyou-eureka-server.credentials.uri:http://localhost:8761}/eureka/
 
 #stores:
 #  ribbon:
@@ -20,16 +24,3 @@ logging:
     root: WARN
     se.callista: INFO
     
-
-
----
-spring:
-  profiles: cloud
-
-eureka:
-  instance:
-    hostname: ${vcap.application.uris[0]:localhost}
-    nonSecurePort: 80
-  client:
-    serviceUrl:
-      defaultZone: ${vcap.services.meusyou-eureka-server.credentials.uri:http://localhost:8761}/eureka/
