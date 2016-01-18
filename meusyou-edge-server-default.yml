@@ -5,6 +5,8 @@ zuul:
     meusyou-ms1-service:
       path: /ms1/**
 #      stripPrefix: false
+    meusyou-ms2-service:
+      path: /ms2/**
 
 server:
   port: ${vcap.application.port:8765}
