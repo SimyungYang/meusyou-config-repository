@@ -8,6 +8,8 @@ zuul:
 
 server:
   port: ${vcap.application.port:8765}
+  
+bar: changed
 
 eureka:
   instance:
