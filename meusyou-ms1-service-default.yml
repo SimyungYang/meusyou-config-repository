@@ -32,4 +32,4 @@ eureka:
     nonSecurePort: 80
   client:
     serviceUrl:
-      defaultZone: ${vcap.services.eureka-server.credentials.uri:http://localhost:8761}/eureka/
+      defaultZone: ${vcap.services.meusyou-eureka-server.credentials.uri:http://localhost:8761}/eureka/
