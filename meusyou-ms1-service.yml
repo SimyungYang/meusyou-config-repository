@@ -1,0 +1,35 @@
+server:
+  port: ${vcap.application.port:8081}
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 3
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value}}}
+  client:
+    registryFetchIntervalSeconds: 5
+    instanceInfoReplicationIntervalSeconds: 5
+    initialInstanceInfoReplicationIntervalSeconds: 5
+
+#stores:
+#  ribbon:
+#    ServerListRefreshInterval: 1000
+
+logging:
+  level:
+    root: WARN
+    se.callista: INFO
+    
+
+
+---
+spring:
+  profiles: cloud
+
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost}
+    nonSecurePort: 80
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.eureka-server.credentials.uri:http://localhost:8761}/eureka/
