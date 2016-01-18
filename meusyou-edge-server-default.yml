@@ -9,7 +9,7 @@ zuul:
 server:
   port: ${vcap.application.port:8765}
   
-bar: edge
+bar: edge-default
 
 eureka:
   instance:
